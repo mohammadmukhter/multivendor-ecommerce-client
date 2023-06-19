@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper";
+import { Navigation, Pagination } from "swiper";
 
 const Popular = () => {
   return (
@@ -32,7 +32,8 @@ const Popular = () => {
             spaceBetween: 50,
           },
         }}
-        modules={[Pagination]}
+        modules={[Pagination, Navigation]}
+        navigation
         className="mySwiper"
       >
         <SwiperSlide>

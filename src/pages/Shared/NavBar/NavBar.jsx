@@ -16,6 +16,9 @@ const NavBar = () => {
       <li>
         <Link>Orders</Link>
       </li>
+      <li>
+        <Link>Dashboard</Link>
+      </li>
     </>
   );
   return (
@@ -48,11 +51,11 @@ const NavBar = () => {
                 {navList}
               </ul>
             </div>
-          </div>
-          <div className="navbar p-0 hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 uppercase text-lg font-semibold text-gray-600">
-              {navList}
-            </ul>
+            <div className="navbar p-0 hidden lg:flex">
+              <ul className="menu menu-horizontal px-1 uppercase text-lg font-semibold text-gray-600">
+                {navList}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
