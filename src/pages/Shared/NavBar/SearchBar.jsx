@@ -23,6 +23,12 @@ const SearchBar = () => {
         </div>
 
         <div className="flex-none">
+          <Link
+            to="/login"
+            className="px-2 py-1 border-[1px] hover:bg-gray-950 hover:text-white rounded-md text-xl font-semibold"
+          >
+            Login
+          </Link>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator">

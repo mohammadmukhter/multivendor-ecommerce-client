@@ -6,7 +6,9 @@ const Main = () => {
   return (
     <div className=" bg-orange-50/50">
       <NavBar></NavBar>
-      <Outlet></Outlet>
+      <div className="min-h-screen">
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );
