@@ -43,16 +43,16 @@ const NavBar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 uppercase text-lg font-semibold text-gray-600"
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 uppercase text-lg font-semibold text-gray-600 z-50"
               >
                 {navList}
               </ul>
             </div>
-            <div className="navbar p-0 hidden lg:flex">
-              <ul className="menu menu-horizontal px-1 uppercase text-lg font-semibold text-gray-600">
-                {navList}
-              </ul>
-            </div>
+          </div>
+          <div className="navbar p-0 hidden lg:flex">
+            <ul className="menu menu-horizontal px-1 uppercase text-lg font-semibold text-gray-600">
+              {navList}
+            </ul>
           </div>
         </div>
       </div>
