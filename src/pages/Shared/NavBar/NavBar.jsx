@@ -19,7 +19,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="shadow-md">
+    <div className="shadow-md bg-white">
       <SearchBar></SearchBar>
       <div>
         <div className="navbar bg-base-100 p-0 max-w-7xl mx-auto">
