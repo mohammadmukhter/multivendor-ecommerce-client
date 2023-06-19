@@ -6,7 +6,7 @@ const SearchBar = () => {
       <div className=" navbar bg-base-100 max-w-7xl mx-auto">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost normal-case text-xl">
-            daisyUI
+            My Shops
           </Link>
           <div className="flex w-1/2 mx-auto">
             <div className="form-control w-full">
