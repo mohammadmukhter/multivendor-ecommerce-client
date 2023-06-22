@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -11,7 +12,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
 
     setError("");
@@ -20,6 +21,25 @@ const Register = () => {
       setError("Confirm password does not matched!");
       return;
     }
+
+    const imageFile = data.image[0];
+
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+
+    const insertedData = await axios.post(
+      "http://localhost:5000/users/register",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    console.log(insertedData);
   };
 
   return (
@@ -130,19 +150,14 @@ const Register = () => {
                   </label>
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Photo URL</span>
+                      <span className="label-text">Image</span>
                     </label>
                     <input
-                      type="text"
-                      placeholder="Photo URL"
-                      {...register("photoUrl", { required: true })}
-                      className="input input-bordered"
+                      type="file"
+                      placeholder="Image"
+                      {...register("image")}
+                      className="file-input file-input-bordered w-full"
                     />
-                    {errors.photoUrl && (
-                      <span className="text-red-600 text-left text-sm w-64 mt-1">
-                        Photo URL is required
-                      </span>
-                    )}
                   </div>
                   <div className="form-control mt-6">
                     <button className="bg-gray-200 text-gray-950 border-2 border-gray-200 hover:bg-gray-950 hover:text-white font-bold text-xl uppercase px-3 py-1 rounded-md">
