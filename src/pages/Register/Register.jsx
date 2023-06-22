@@ -10,10 +10,11 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
 
     setError("");
 
@@ -30,16 +31,24 @@ const Register = () => {
     formData.append("email", data.email);
     formData.append("password", data.password);
 
-    const insertedData = await axios.post(
-      "http://localhost:5000/users/register",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+    try {
+      const insertedData = await axios.post(
+        "http://localhost:5000/users/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (insertedData.data.data.createdAt) {
+        console.log(insertedData);
+        reset();
       }
-    );
-    console.log(insertedData);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
