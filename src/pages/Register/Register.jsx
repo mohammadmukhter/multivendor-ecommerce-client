@@ -87,19 +87,20 @@ const Register = () => {
                         </span>
                       )}
                     </div>
+
                     <div className="form-control">
                       <label className="label">
-                        <span className="label-text">Email</span>
+                        <span className="label-text">Phone</span>
                       </label>
                       <input
-                        type="email"
-                        placeholder="email"
-                        {...register("email", { required: true })}
+                        type="text"
+                        placeholder="phone"
+                        {...register("phone", { required: true })}
                         className="input input-bordered"
                       />
-                      {errors.email && (
+                      {errors.phone && (
                         <span className="text-red-600 text-left text-sm w-64 mt-1">
-                          Email is required
+                          phone is required
                         </span>
                       )}
                     </div>
@@ -157,6 +158,24 @@ const Register = () => {
                   <label className="label">
                     <span className="text-red-600 mx-auto">{error}</span>
                   </label>
+
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="email"
+                      {...register("email", { required: true })}
+                      className="input input-bordered"
+                    />
+                    {errors.email && (
+                      <span className="text-red-600 text-left text-sm w-64 mt-1">
+                        Email is required
+                      </span>
+                    )}
+                  </div>
+
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Image</span>
