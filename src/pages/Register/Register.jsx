@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import bgImg from "../../assets/log_bg.jpg";
 
 const Register = () => {
@@ -28,6 +29,7 @@ const Register = () => {
     const formData = new FormData();
     formData.append("image", imageFile);
     formData.append("name", data.name);
+    formData.append("phone", data.phone);
     formData.append("email", data.email);
     formData.append("password", data.password);
 
@@ -43,10 +45,23 @@ const Register = () => {
       );
 
       if (insertedData.data.data.createdAt) {
-        console.log(insertedData);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User Created Successfully!",
+          showConfirmButton: true,
+          timer: 1500,
+        });
         reset();
       }
     } catch (err) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `${err.response.data.errors.avatar.msg}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
       console.log(err);
     }
   };

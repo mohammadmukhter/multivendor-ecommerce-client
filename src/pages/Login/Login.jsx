@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import photo from "../../assets/log_bg.jpg";
@@ -9,8 +10,20 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    try {
+      const loggedUser = await axios.post(
+        "http://localhost:5000/users/login",
+        data
+      );
+
+      if (loggedUser) {
+        console.log(loggedUser);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
