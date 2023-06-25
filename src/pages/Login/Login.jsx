@@ -1,13 +1,16 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import photo from "../../assets/log_bg.jpg";
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -19,10 +22,26 @@ const Login = () => {
       );
 
       if (loggedUser) {
-        console.log(loggedUser);
+        localStorage.setItem("access-token", loggedUser.data.token);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User Log In Successfully!",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+        reset();
+        navigate("/");
       }
     } catch (err) {
       console.log(err);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Login failed",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     }
   };
 
