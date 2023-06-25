@@ -17,7 +17,7 @@ const NavBar = () => {
         <Link>Orders</Link>
       </li>
       <li>
-        <Link>Dashboard</Link>
+        <Link to="/dashboard/manageUsers">Dashboard</Link>
       </li>
     </>
   );

@@ -1,5 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../layouts/Dashboard/Dashboard";
 import Main from "../layouts/Main/Main";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
+import ManageVendors from "../pages/Dashboard/Admin/ManageVendors/ManageVendors";
+import ManageUsers from "../pages/Dashboard/Admin/Manageusers/ManageUsers";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
@@ -20,6 +24,24 @@ const routes = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "manageVendors",
+        element: <ManageVendors></ManageVendors>,
       },
     ],
   },
