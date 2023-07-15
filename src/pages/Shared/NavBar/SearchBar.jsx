@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   return (
-    <div className="border-b border-b-gray-100">
-      <div className=" navbar bg-base-100 max-w-7xl mx-auto ">
-        <div className="flex-1">
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            My Shops
-          </Link>
-          <div className="flex w-1/2 mx-auto">
+    <div className="border-b border-b-gray-100 text-gray-600">
+      <div className=" navbar bg-white max-w-7xl mx-auto flex flex-wrap md:flex-nowrap">
+        <Link to="/" className="btn btn-ghost normal-case text-xl order-1">
+          My Shops
+        </Link>
+        <div className="flex-1 basis-full order-3 md:order-2">
+          <div className="flex w-full md:w-1/2 mx-auto">
             <div className="form-control w-full">
               <input
                 type="text"
@@ -22,12 +22,18 @@ const SearchBar = () => {
           </div>
         </div>
 
-        <div className="flex-none">
+        <div className="flex-none gap-2 md:order-3 order-2 ml-auto">
           <Link
             to="/login"
             className="px-2 py-1 border-[1px] hover:bg-gray-950 hover:text-white rounded-md text-xl font-semibold"
           >
             Login
+          </Link>
+          <Link
+            to="/register"
+            className="px-2 py-1 border-[1px] hover:bg-gray-950 hover:text-white rounded-md text-xl font-semibold"
+          >
+            Register
           </Link>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -46,20 +52,23 @@ const SearchBar = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">8</span>
+                <span className="badge badge-sm indicator-item">{"0"}</span>
               </div>
             </label>
             <div
               tabIndex={0}
-              className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow z-50"
+              className="mt-3 card card-compact dropdown-content w-52 bg-white shadow z-50"
             >
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="font-bold text-lg">{"0"} Items</span>
+                <span className="text-info">Subtotal: ${"0"}</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <Link
+                    to="/myCartPage"
+                    className="px-2 py-1 border-[1px] w-full text-center hover:bg-gray-950 hover:text-white rounded-md text-xl font-semibold"
+                  >
                     View cart
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -72,7 +81,7 @@ const SearchBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52  z-50"
+              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52  z-50"
             >
               <li>
                 <a className="justify-between">
