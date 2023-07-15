@@ -5,7 +5,9 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 import ManageVendors from "../pages/Dashboard/Admin/ManageVendors/ManageVendors";
 import ManageUsers from "../pages/Dashboard/Admin/Manageusers/ManageUsers";
 import Home from "../pages/Home/Home/Home";
+import ProductDetails from "../pages/Home/ProductDetails/ProductDetails";
 import Login from "../pages/Login/Login";
+import ProductsPage from "../pages/ProductsPage/ProductsPage";
 import Register from "../pages/Register/Register";
 
 const routes = createBrowserRouter([
@@ -16,6 +18,15 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+
+      {
+        path: "productDetails",
+        element: <ProductDetails></ProductDetails>,
+      },
+      {
+        path: "allProducts",
+        element: <ProductsPage></ProductsPage>,
       },
       {
         path: "login",
