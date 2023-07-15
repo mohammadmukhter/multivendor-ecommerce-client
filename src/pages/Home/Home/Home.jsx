@@ -18,7 +18,7 @@ const Home = () => {
         <Popular></Popular>
       </div>
       <div>
-        <Products></Products>
+        <Products limit={10}></Products>
       </div>
     </div>
   );
