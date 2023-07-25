@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../../../pages/Shared/NavBar/SearchBar";
+import { AuthContext } from "../../../providers/authProvider";
 const NavBar = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const navList = (
     <>
       <li>
