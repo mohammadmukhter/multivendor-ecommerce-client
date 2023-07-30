@@ -80,7 +80,7 @@ const SearchBar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={userData.userImage} />
+                <img src={userData?.userImage} />
               </div>
             </label>
             <ul
@@ -89,7 +89,7 @@ const SearchBar = () => {
             >
               <li>
                 <a className="justify-between">
-                  {userData.name}
+                  {userData?.name}
                   <span className="badge">New</span>
                 </a>
               </li>

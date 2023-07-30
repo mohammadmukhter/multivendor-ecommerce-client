@@ -1,11 +1,20 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import photo from "../../assets/log_bg.jpg";
+import { AuthContext } from "../../providers/authProvider";
 
 const Login = () => {
+  const { refetch, isFetched } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from || "/";
+
+  console.log(from);
+
   const {
     register,
     handleSubmit,
@@ -31,7 +40,11 @@ const Login = () => {
           timer: 1500,
         });
         reset();
-        navigate("/");
+        refetch();
+
+        if (isFetched) {
+          navigate(from);
+        }
       }
     } catch (err) {
       console.log(err);

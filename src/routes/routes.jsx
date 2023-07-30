@@ -11,6 +11,7 @@ import ProductDetails from "../pages/Home/ProductDetails/ProductDetails";
 import Login from "../pages/Login/Login";
 import ProductsPage from "../pages/ProductsPage/ProductsPage";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -42,7 +43,12 @@ const routes = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "adminHome",
