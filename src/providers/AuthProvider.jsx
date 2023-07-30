@@ -1,39 +1,34 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const userToken = localStorage.getItem("access-token");
-    const userDataFetcher = async () => {
-      try {
-        const userData = await axios.get(
-          "http://localhost:3000/users/loggedUser",
-          {
-            headers: {
-              Authorization: `Bearer ${userToken}`,
-            },
-          }
-        );
-        if (userData) {
-          setUser(userData);
-          setLoading(false);
+  const userToken = localStorage.getItem("access-token");
+  const { isLoading: userLoading, data: userData = [] } = useQuery({
+    queryKey: ["userData", userToken],
+    enabled: !!localStorage.getItem("access-token"),
+    queryFn: async () => {
+      const fetchedData = await axios.get(
+        "http://localhost:3000/users/loggedUser",
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
         }
-      } catch (err) {
-        console.log(err);
-      }
-    };
+      );
+      return fetchedData.data;
+    },
+  });
 
-    userDataFetcher();
-  }, []);
+  if (!userLoading) {
+    console.log(userData);
+  }
 
   const authInfo = {
-    user,
-    loading,
+    userData,
+    userLoading,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
