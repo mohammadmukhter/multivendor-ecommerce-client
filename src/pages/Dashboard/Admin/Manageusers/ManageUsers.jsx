@@ -3,9 +3,17 @@ import { Link } from "react-router-dom";
 import useGetAllUsers from "../../../../hooks/useGetAllUsers";
 
 const ManageUsers = () => {
-  const [allUsers] = useGetAllUsers();
+  const [allUsers, isLoading] = useGetAllUsers();
 
-  console.log(allUsers);
+  if (isLoading) {
+    return (
+      <div className="w-full mt-24 flex items-center justify-center">
+        <span className="loading loading-ring loading-lg"></span>
+        <span className="loading loading-ring loading-lg"></span>
+        <span className="loading loading-ring loading-lg"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full px-4">

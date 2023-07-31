@@ -1,9 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layouts/Dashboard/Dashboard";
 import Main from "../layouts/Main/Main";
+import AddCategory from "../pages/Dashboard/Admin/AddCategory/AddCategory";
 import AddProduct from "../pages/Dashboard/Admin/AddProduct/AddProduct";
+import AddSubCategory from "../pages/Dashboard/Admin/AddSubCategory/AddSubCategory";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
+import ManageCategory from "../pages/Dashboard/Admin/ManageCategory/ManageCategory";
 import ManageProducts from "../pages/Dashboard/Admin/ManageProducts/ManageProducts";
+import ManageSubCategory from "../pages/Dashboard/Admin/ManageSubCategory/ManageSubCategory";
 import ManageVendors from "../pages/Dashboard/Admin/ManageVendors/ManageVendors";
 import ManageUsers from "../pages/Dashboard/Admin/Manageusers/ManageUsers";
 import Home from "../pages/Home/Home/Home";
@@ -53,6 +57,22 @@ const routes = createBrowserRouter([
       {
         path: "adminHome",
         element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "addCategory",
+        element: <AddCategory></AddCategory>,
+      },
+      {
+        path: "manageCategory",
+        element: <ManageCategory></ManageCategory>,
+      },
+      {
+        path: "addSubCategory",
+        element: <AddSubCategory></AddSubCategory>,
+      },
+      {
+        path: "manageSubCategory",
+        element: <ManageSubCategory></ManageSubCategory>,
       },
       {
         path: "addProduct",

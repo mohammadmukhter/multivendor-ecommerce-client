@@ -22,7 +22,30 @@ const Dashboard = () => {
               <FaHouseUser> </FaHouseUser>Admin Home
             </Link>
           </li>
+          <div className="divider my-0"></div>
 
+          <li>
+            <Link to="/dashboard/addCategory">
+              <FaPlusCircle></FaPlusCircle>Add Category
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard/manageCategory">
+              <FaPlusCircle></FaPlusCircle>Manage Category
+            </Link>
+          </li>
+          <div className="divider my-0"></div>
+          <li>
+            <Link to="/dashboard/addSubCategory">
+              <FaPlusCircle></FaPlusCircle>Add Sub Category
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard/manageSubCategory">
+              <FaPlusCircle></FaPlusCircle>Manage sub Category
+            </Link>
+          </li>
+          <div className="divider my-0"></div>
           <li>
             <Link to="/dashboard/addProduct">
               <FaPlusCircle></FaPlusCircle>Add Product
@@ -30,12 +53,15 @@ const Dashboard = () => {
           </li>
           <li>
             <Link to="/dashboard/manageProducts">
-              <FaListAlt></FaListAlt>Products
+              <FaListAlt></FaListAlt> Manage Products
             </Link>
           </li>
+
+          <div className="divider my-0"></div>
           <li>
             <Link to="/dashboard/manageUsers">Manage Users</Link>
           </li>
+          <div className="divider my-0"></div>
           <li>
             <Link to="/dashboard/manageVendors">Manage Vendors</Link>
           </li>
