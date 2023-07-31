@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../../providers/authProvider";
+import useUser from "../../../hooks/useUser";
 
 const SearchBar = () => {
-  const { user: userData } = useContext(AuthContext);
+  const { userData, loading } = useUser();
 
   const logOutHandler = async () => {
     localStorage.removeItem("access-token");
@@ -19,6 +18,16 @@ const SearchBar = () => {
 
     window.location.reload();
   };
+
+  if (!userData && loading) {
+    return (
+      <div className="w-full mt-24 flex items-center justify-center">
+        <span className="loading loading-ring loading-lg"></span>
+        <span className="loading loading-ring loading-lg"></span>
+        <span className="loading loading-ring loading-lg"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="border-b border-b-gray-100 text-gray-600">
@@ -42,18 +51,25 @@ const SearchBar = () => {
         </div>
 
         <div className="flex-none gap-2 md:order-3 order-2 ml-auto">
-          <Link
-            to="/login"
-            className="px-2 py-1 border-[1px] hover:bg-gray-950 hover:text-white rounded-md text-xl font-semibold"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="px-2 py-1 border-[1px] hover:bg-gray-950 hover:text-white rounded-md text-xl font-semibold"
-          >
-            Register
-          </Link>
+          {userData ? (
+            ""
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="px-2 py-1 border-[1px] hover:bg-gray-950 hover:text-white rounded-md text-xl font-semibold"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="px-2 py-1 border-[1px] hover:bg-gray-950 hover:text-white rounded-md text-xl font-semibold"
+              >
+                Register
+              </Link>
+            </>
+          )}
+
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator">
@@ -108,9 +124,13 @@ const SearchBar = () => {
                   <span className="badge">New</span>
                 </a>
               </li>
-              <li>
-                <button onClick={logOutHandler}>Log Out</button>
-              </li>
+              {userData ? (
+                <li>
+                  <button onClick={logOutHandler}>Log Out</button>
+                </li>
+              ) : (
+                ""
+              )}
             </ul>
           </div>
         </div>

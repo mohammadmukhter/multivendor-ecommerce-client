@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import useUser from "../../../hooks/useUser";
 import SearchBar from "../../../pages/Shared/NavBar/SearchBar";
 const NavBar = () => {
+  const { userData } = useUser();
+
   const navList = (
     <>
       <li>
@@ -12,9 +15,13 @@ const NavBar = () => {
       <li>
         <Link>Orders</Link>
       </li>
-      <li>
-        <Link to="/dashboard/adminHome">Dashboard</Link>
-      </li>
+      {userData ? (
+        <li>
+          <Link to="/dashboard/adminHome">Dashboard</Link>
+        </li>
+      ) : (
+        ""
+      )}
     </>
   );
   return (
