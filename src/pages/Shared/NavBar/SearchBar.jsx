@@ -1,9 +1,24 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../../providers/authProvider";
 
 const SearchBar = () => {
-  const { userData } = useContext(AuthContext);
+  const { user: userData } = useContext(AuthContext);
+
+  const logOutHandler = async () => {
+    localStorage.removeItem("access-token");
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Log Out Successfully!",
+      showConfirmButton: true,
+      timer: 3000,
+    });
+
+    window.location.reload();
+  };
 
   return (
     <div className="border-b border-b-gray-100 text-gray-600">
@@ -94,7 +109,7 @@ const SearchBar = () => {
                 </a>
               </li>
               <li>
-                <a>Logout</a>
+                <button onClick={logOutHandler}>Log Out</button>
               </li>
             </ul>
           </div>
