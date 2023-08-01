@@ -13,7 +13,6 @@ const AddCategory = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const dataInserted = await axiosSecure.post("/categories", data);
 

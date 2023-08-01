@@ -1,15 +1,36 @@
 import { useForm } from "react-hook-form";
 import { FaPlusCircle } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useGetAllCategories from "../../../../hooks/useGetAllCategories";
 
 const AddSubCategory = () => {
+  const [categoriesData] = useGetAllCategories();
+  const [axiosSecure] = useAxiosSecure();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const result = await axiosSecure.post("/subCategories", data);
+      if (result.data.inserted) {
+        reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Category Inserted Successfully!",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -41,15 +62,17 @@ const AddSubCategory = () => {
               <span className="label-text">Category Name</span>
             </label>
             <select
-              {...register("categoryName")}
+              {...register("categoryId", { required: true, minLength: 2 })}
               className="input input-bordered"
             >
               <option value="">Select Category</option>
-              <option value="1">category1</option>
-              <option value="2">category2</option>
-              <option value="3">category3</option>
+              {categoriesData.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.categoryName}
+                </option>
+              ))}
             </select>
-            {errors.categoryName && (
+            {errors.categoryId && (
               <span className="text-red-600 text-left text-sm w-64 mt-1">
                 Category Name is required
               </span>
