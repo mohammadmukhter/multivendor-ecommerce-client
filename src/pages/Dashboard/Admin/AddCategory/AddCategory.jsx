@@ -1,15 +1,35 @@
 import { useForm } from "react-hook-form";
 import { FaPlusCircle } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const AddCategory = () => {
+  const [axiosSecure] = useAxiosSecure();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    try {
+      const dataInserted = await axiosSecure.post("/category", data);
+
+      if (dataInserted.data.inserted) {
+        reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Category Inserted Successfully!",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
