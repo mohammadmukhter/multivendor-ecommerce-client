@@ -15,7 +15,7 @@ const AddCategory = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const dataInserted = await axiosSecure.post("/category", data);
+      const dataInserted = await axiosSecure.post("/categories", data);
 
       if (dataInserted.data.inserted) {
         reset();
