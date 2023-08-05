@@ -55,9 +55,14 @@ const ManageCategory = () => {
                 </td>
 
                 <td className=" border-[1px] rounded-sm space-y-1">
-                  <button className="btn btn-ghost btn-sm w-full bg-gray-800 text-white">
-                    update
-                  </button>
+                  <Link
+                    to={`/dashboard/updateCategory/${category._id}`}
+                    state={{ categoryName: category.categoryName }}
+                    className="btn btn-ghost btn-sm w-full bg-gray-800 text-white"
+                  >
+                    Update
+                  </Link>
+
                   <button className="btn btn-ghost btn-sm w-full bg-red-600 text-white">
                     Delete
                   </button>

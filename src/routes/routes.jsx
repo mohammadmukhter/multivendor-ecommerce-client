@@ -6,6 +6,7 @@ import AddProduct from "../pages/Dashboard/Admin/AddProduct/AddProduct";
 import AddSubCategory from "../pages/Dashboard/Admin/AddSubCategory/AddSubCategory";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 import ManageCategory from "../pages/Dashboard/Admin/ManageCategory/ManageCategory";
+import UpdateCategory from "../pages/Dashboard/Admin/ManageCategory/updateCategory";
 import ManageProducts from "../pages/Dashboard/Admin/ManageProducts/ManageProducts";
 import ManageSubCategory from "../pages/Dashboard/Admin/ManageSubCategory/ManageSubCategory";
 import ManageVendors from "../pages/Dashboard/Admin/ManageVendors/ManageVendors";
@@ -81,6 +82,10 @@ const routes = createBrowserRouter([
       {
         path: "manageProducts",
         element: <ManageProducts></ManageProducts>,
+      },
+      {
+        path: "updateCategory/:id",
+        element: <UpdateCategory></UpdateCategory>,
       },
       {
         path: "manageUsers",
