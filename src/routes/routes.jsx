@@ -9,6 +9,7 @@ import ManageCategory from "../pages/Dashboard/Admin/ManageCategory/ManageCatego
 import UpdateCategory from "../pages/Dashboard/Admin/ManageCategory/updateCategory";
 import ManageProducts from "../pages/Dashboard/Admin/ManageProducts/ManageProducts";
 import ManageSubCategory from "../pages/Dashboard/Admin/ManageSubCategory/ManageSubCategory";
+import UpdateSubCategory from "../pages/Dashboard/Admin/ManageSubCategory/UpdateSubCategory";
 import ManageVendors from "../pages/Dashboard/Admin/ManageVendors/ManageVendors";
 import ManageUsers from "../pages/Dashboard/Admin/Manageusers/ManageUsers";
 import Home from "../pages/Home/Home/Home";
@@ -68,12 +69,20 @@ const routes = createBrowserRouter([
         element: <ManageCategory></ManageCategory>,
       },
       {
+        path: "updateCategory/:id",
+        element: <UpdateCategory></UpdateCategory>,
+      },
+      {
         path: "addSubCategory",
         element: <AddSubCategory></AddSubCategory>,
       },
       {
         path: "manageSubCategory",
         element: <ManageSubCategory></ManageSubCategory>,
+      },
+      {
+        path: `updateSubCategory/:id`,
+        element: <UpdateSubCategory></UpdateSubCategory>,
       },
       {
         path: "addProduct",
@@ -83,10 +92,7 @@ const routes = createBrowserRouter([
         path: "manageProducts",
         element: <ManageProducts></ManageProducts>,
       },
-      {
-        path: "updateCategory/:id",
-        element: <UpdateCategory></UpdateCategory>,
-      },
+
       {
         path: "manageUsers",
         element: <ManageUsers></ManageUsers>,
