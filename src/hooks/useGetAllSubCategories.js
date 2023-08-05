@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 import useUser from "./useUser";
 
-const useGetAllSubCategories = () => {
+const useGetAllSubCategories = (categoryId) => {
     const {userData} = useUser();
     const [axiosSecure] = useAxiosSecure();
 
@@ -11,7 +11,7 @@ const useGetAllSubCategories = () => {
         enabled: !!localStorage.getItem('access-token'),
         queryFn: async()=> {
             try{
-                const result =await axiosSecure.get("/subCategories")
+                const result =await axiosSecure.get(`/subCategories/${categoryId}`)
                 return result.data;
             }catch(err){
                 return [];
