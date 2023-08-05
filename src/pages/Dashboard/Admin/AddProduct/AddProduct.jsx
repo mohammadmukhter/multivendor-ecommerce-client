@@ -39,9 +39,12 @@ const AddProduct = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: { vendorEmail: userData.email },
+  });
 
   const onSubmit = (data) => {
+    console.log("hello");
     console.log(data);
   };
 
@@ -132,7 +135,6 @@ const AddProduct = () => {
                 placeholder="Vendor Email"
                 {...register("vendorEmail", { required: true })}
                 className="input input-bordered"
-                value={userData.email}
                 disabled
               />
             </div>
@@ -217,12 +219,12 @@ const AddProduct = () => {
                 <span className="label-text">Size</span>
               </label>
               <select
-                {...register("size", { required: true, minLength: 2 })}
+                {...register("size", { required: true })}
                 className="input input-bordered"
               >
-                <option value="">Small</option>
-                <option value="">Medium</option>
-                <option value="">Large</option>
+                <option value="1">Small</option>
+                <option value="2">Medium</option>
+                <option value="3">Large</option>
               </select>
             </div>
           </div>
