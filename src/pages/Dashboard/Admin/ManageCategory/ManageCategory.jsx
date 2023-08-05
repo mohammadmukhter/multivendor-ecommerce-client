@@ -1,9 +1,12 @@
 import { FaPlusCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useGetAllCategories from "../../../../hooks/useGetAllCategories";
 
 const ManageCategory = () => {
-  const [categoriesData, isCategoriesLoading] = useGetAllCategories();
+  const [categoriesData, isCategoriesLoading, refetch] = useGetAllCategories();
+  const [axiosSecure] = useAxiosSecure();
 
   if (isCategoriesLoading) {
     return (
@@ -14,6 +17,38 @@ const ManageCategory = () => {
       </div>
     );
   }
+
+  // delete a category handler function
+  const deleteHandler = (categoryId) => {
+    console.log(categoryId);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const deleteFunction = async () => {
+          try {
+            const deletedData = await axiosSecure.delete(
+              `/categories/${categoryId}`
+            );
+
+            if (deletedData.data.deleted) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              refetch();
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        };
+        deleteFunction();
+      }
+    });
+  };
 
   return (
     <div className="w-full px-4">
@@ -63,7 +98,10 @@ const ManageCategory = () => {
                     Update
                   </Link>
 
-                  <button className="btn btn-ghost btn-sm w-full bg-red-600 text-white">
+                  <button
+                    onClick={() => deleteHandler(category._id)}
+                    className="btn btn-ghost btn-sm w-full bg-red-600 text-white"
+                  >
                     Delete
                   </button>
                   <button className="btn btn-ghost btn-sm w-full bg-green-800 text-white">

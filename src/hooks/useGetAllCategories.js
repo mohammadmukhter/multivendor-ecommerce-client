@@ -7,7 +7,7 @@ const useGetAllCategories = () => {
     const {userData} = useUser();
     const [axiosSecure] = useAxiosSecure()
 
-    const {data: categoriesData=[], isLoading: isCategoriesLoading} = useQuery({
+    const {data: categoriesData=[], isLoading: isCategoriesLoading, refetch} = useQuery({
         queryKey: ['categoriesData', userData.email],
         enabled: !!userData && !!localStorage.getItem('access-token'),
         queryFn: async()=> {
@@ -20,7 +20,7 @@ const useGetAllCategories = () => {
             }
         }
     })
-    return [categoriesData, isCategoriesLoading];
+    return [categoriesData, isCategoriesLoading, refetch];
 };
 
 export default useGetAllCategories;
