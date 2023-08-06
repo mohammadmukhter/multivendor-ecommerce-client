@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 import useUser from "./useUser";
 
-const useGetAllSubCategories = (categoryId) => {
+const useGetAllSubCategories = (categoryId= "") => {
     const {userData} = useUser();
     const [axiosSecure] = useAxiosSecure();
 

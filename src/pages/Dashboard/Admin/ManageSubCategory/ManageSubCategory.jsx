@@ -80,18 +80,18 @@ const ManageSubCategory = () => {
           </thead>
           <tbody className="text-gray-700/80">
             {subCategoriesData.map((subCategory, index) => (
-              <tr key={subCategory._id}>
+              <tr key={subCategory?._id}>
                 <th className=" font-semibold border-[1px] rounded-sm">
                   {index + 1}
                 </th>
                 <td className=" font-semibold border-[1px] rounded-sm">
-                  {subCategory.subCategoryName}
+                  {subCategory?.subCategoryName}
                 </td>
                 <td className=" font-semibold border-[1px] rounded-sm">
-                  {subCategory.categoryId?.categoryName}
+                  {subCategory?.categoryId?.categoryName}
                 </td>
                 <td className="text-end font-semibold border-[1px] rounded-sm">
-                  {subCategory.status}
+                  {subCategory?.status}
                 </td>
 
                 <td className=" border-[1px] rounded-sm space-y-1">

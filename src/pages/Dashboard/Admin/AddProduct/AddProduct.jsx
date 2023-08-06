@@ -43,9 +43,33 @@ const AddProduct = () => {
     defaultValues: { vendorEmail: userData.email },
   });
 
-  const onSubmit = (data) => {
-    console.log("hello");
-    console.log(data);
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+
+    formData.append("productName", data.productName);
+    formData.append("categoryId", data.categoryId);
+    formData.append("subCategoryId", data.subCategoryId);
+    formData.append("vendorEmail", data.vendorEmail);
+    formData.append("availableQuantity", data.availableQuantity);
+    formData.append("model", data.model);
+    formData.append("buyingPrice", data.buyingPrice);
+    formData.append("sellingPrice", data.sellingPrice);
+    formData.append("color", data.color);
+    formData.append("size", data.size);
+    formData.append("details", data.details);
+
+    const fileInput = document.querySelector('input[type="file"]');
+
+    for (let i = 0; i < fileInput.files.length; i++) {
+      formData.append("productImg", fileInput.files[i]);
+    }
+
+    try {
+      const result = await axiosSecure.post("/products", formData);
+      console.log(result.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
