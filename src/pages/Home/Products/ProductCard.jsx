@@ -5,6 +5,13 @@ import useUser from "../../../hooks/useUser";
 
 const ProductCard = ({ product }) => {
   const { userData } = useUser();
+
+  // add to cart handler
+  const cartHandler = (productId, userEmail) => {
+    const result = addCartUtil(productId, userEmail);
+    console.log(result);
+  };
+
   return (
     <div className="card card-compact w-full bg-white text-gray-700 border-[1px] border-gray-100 rounded-md shadow-sm flex justify-between text-center md:text-left  ">
       <div>
@@ -33,7 +40,7 @@ const ProductCard = ({ product }) => {
           Details
         </Link>
         <button
-          onClick={() => addCartUtil(product._id, userData?.email)}
+          onClick={() => cartHandler(product._id, userData?.email)}
           className="px-3 py-1 rounded-md border-[1px] border-black hover:bg-black/90 hover:text-white uppercase font-semibold"
         >
           <FaCartPlus></FaCartPlus>

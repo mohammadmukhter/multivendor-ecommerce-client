@@ -1,5 +1,5 @@
 const addCartUtil = (productId, userEmail= "") => {
-    console.log(productId, userEmail);
+    return {productId, userEmail}
 };
 
 export default addCartUtil;

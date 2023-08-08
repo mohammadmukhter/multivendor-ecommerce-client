@@ -7,6 +7,13 @@ const ProductDetails = () => {
   const { userData } = useUser();
   const location = useLocation();
   const product = location.state.product;
+
+  // add to cart handler
+  const cartHandler = (productId, userEmail) => {
+    const result = addCartUtil(productId, userEmail);
+    console.log(result);
+  };
+
   return (
     <div className="hero py-12 bg-black/10 text-gray-800">
       <div className="px-12 gap-8 flex flex-col lg:flex-row">
@@ -56,7 +63,7 @@ const ProductDetails = () => {
             </table>
           </div>
           <button
-            onClick={() => addCartUtil(product._id, userData?.email)}
+            onClick={() => cartHandler(product._id, userData?.email)}
             className="px-3 py-1 rounded-md border-[1px] border-black hover:bg-black/90 hover:text-white uppercase font-semibold flex items-center gap-2"
           >
             <FaCartPlus></FaCartPlus> add to cart
