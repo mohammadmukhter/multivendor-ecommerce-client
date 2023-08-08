@@ -1,7 +1,10 @@
 import { FaCartPlus } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
+import addCartUtil from "../../../../utils/addCartUtil";
+import useUser from "../../../hooks/useUser";
 
 const ProductDetails = () => {
+  const { userData } = useUser();
   const location = useLocation();
   const product = location.state.product;
   return (
@@ -52,7 +55,10 @@ const ProductDetails = () => {
               </tbody>
             </table>
           </div>
-          <button className="px-3 py-1 rounded-md border-[1px] border-black hover:bg-black/90 hover:text-white uppercase font-semibold flex items-center gap-2">
+          <button
+            onClick={() => addCartUtil(product._id, userData?.email)}
+            className="px-3 py-1 rounded-md border-[1px] border-black hover:bg-black/90 hover:text-white uppercase font-semibold flex items-center gap-2"
+          >
             <FaCartPlus></FaCartPlus> add to cart
           </button>
         </div>

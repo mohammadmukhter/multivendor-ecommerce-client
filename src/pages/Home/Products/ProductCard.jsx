@@ -1,7 +1,10 @@
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import addCartUtil from "../../../../utils/addCartUtil";
+import useUser from "../../../hooks/useUser";
 
 const ProductCard = ({ product }) => {
+  const { userData } = useUser();
   return (
     <div className="card card-compact w-full bg-white text-gray-700 border-[1px] border-gray-100 rounded-md shadow-sm flex justify-between text-center md:text-left  ">
       <div>
@@ -30,7 +33,7 @@ const ProductCard = ({ product }) => {
           Details
         </Link>
         <button
-          onClick={() => console.log("hello")}
+          onClick={() => addCartUtil(product._id, userData?.email)}
           className="px-3 py-1 rounded-md border-[1px] border-black hover:bg-black/90 hover:text-white uppercase font-semibold"
         >
           <FaCartPlus></FaCartPlus>

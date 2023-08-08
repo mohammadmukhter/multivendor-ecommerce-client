@@ -1,14 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
-import useUser from "./useUser";
 
 const useGetAllProducts = () => {
-    const {userData} = useUser();
     const [axiosSecure] = useAxiosSecure();
 
     const {data: productsData = [], isLoading: isLoadingProductsData, refetch} = useQuery({
-        queryKey: ['productsData', userData?.email],
-        enabled: !!localStorage.getItem('access-token') && !!userData?.email,
+        queryKey: ['productsData'],
         queryFn: async()=> {
             try{
                 const result = await axiosSecure.get("/products");
