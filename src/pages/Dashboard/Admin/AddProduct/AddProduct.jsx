@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaPlusCircle } from "react-icons/fa";
+import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useGetAllCategories from "../../../../hooks/useGetAllCategories";
 import useUser from "../../../../hooks/useUser";
@@ -39,6 +40,7 @@ const AddProduct = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: { vendorEmail: userData.email },
   });
@@ -59,14 +61,22 @@ const AddProduct = () => {
     formData.append("details", data.details);
 
     const fileInput = document.querySelector('input[type="file"]');
-
     for (let i = 0; i < fileInput.files.length; i++) {
       formData.append("productImg", fileInput.files[i]);
     }
 
     try {
       const result = await axiosSecure.post("/products", formData);
-      console.log(result.data);
+      if (result.data.inserted) {
+        reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Category Inserted Successfully!",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+      }
     } catch (err) {
       console.log(err);
     }

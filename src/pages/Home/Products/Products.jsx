@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import useProductsDataFetcher from "../../../hooks/useProductsDataFetcher";
+import useGetAllProducts from "../../../hooks/useGetAllProducts";
 import ProductCard from "./ProductCard";
 
 const Products = ({ limit }) => {
-  const [products, loading] = useProductsDataFetcher();
+  const [productsData, isLoadingProductsData] = useGetAllProducts();
 
-  if (loading) {
+  if (isLoadingProductsData) {
     return (
       <div className="w-full mt-24 flex items-center justify-center">
         <span className="loading loading-ring loading-lg"></span>
@@ -17,9 +17,9 @@ const Products = ({ limit }) => {
 
   let data;
   if (limit) {
-    data = products.slice(0, limit);
+    data = productsData.slice(0, limit);
   } else {
-    data = [...products];
+    data = [...productsData];
   }
 
   return (
@@ -40,7 +40,7 @@ const Products = ({ limit }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
         {data.map((product) => (
-          <ProductCard key={product.product_id} product={product}></ProductCard>
+          <ProductCard key={product._id} product={product}></ProductCard>
         ))}
       </div>
     </div>

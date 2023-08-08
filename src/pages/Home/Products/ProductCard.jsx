@@ -8,15 +8,15 @@ const ProductCard = ({ product }) => {
         <figure className="p-4">
           <img
             className="rounded-md h-36 w-auto md:w-full"
-            src={product.img}
+            src={`http://localhost:3000/uploads/products/${product.productImg[0]}`}
             alt=""
           />
         </figure>
         <div className="px-4 pb-2 flex flex-col">
-          <h2 className="font-bold text-xl ">{product.name}</h2>
+          <h2 className="font-bold text-xl ">{product.productName}</h2>
           <div className="">
-            <p>Price: {product.price}</p>
-            <p>Available: {product.available_quantity}</p>
+            <p>Price: {product?.price}</p>
+            <p>Available: {product?.available_quantity}</p>
           </div>
         </div>
       </div>

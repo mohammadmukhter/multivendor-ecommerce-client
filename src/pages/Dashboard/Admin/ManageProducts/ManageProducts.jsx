@@ -1,12 +1,12 @@
 import { FaPlusCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useProductsDataFetcher from "../../../../hooks/useProductsDataFetcher";
+import useGetAllProducts from "../../../../hooks/useGetAllProducts";
 
 const ManageProducts = () => {
-  const [products, loading] = useProductsDataFetcher();
-  //   console.log(products);
+  const [productsData, isLoadingProductsData] = useGetAllProducts();
+  console.log(productsData);
 
-  if (loading) {
+  if (isLoadingProductsData) {
     return (
       <div className="w-full mt-24 flex items-center justify-center">
         <span className="loading loading-ring loading-lg"></span>
@@ -48,8 +48,8 @@ const ManageProducts = () => {
             </tr>
           </thead>
           <tbody className="text-gray-700/80">
-            {products &&
-              products.map((data, index) => (
+            {productsData &&
+              productsData.map((data, index) => (
                 <tr key={data._id}>
                   <th className=" font-semibold border-[1px] rounded-sm">
                     {index + 1}
@@ -57,21 +57,23 @@ const ManageProducts = () => {
                   <td className="border-[1px] rounded-sm">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img src={data.img} />
+                        <img
+                          src={`http://localhost:3000/uploads/products/${data.productImg[0]}`}
+                        />
                       </div>
                     </div>
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
-                    {data.name}
+                    {data?.productName}
                   </td>
                   <td className="text-end font-semibold border-[1px] rounded-sm">
-                    {data.price}
+                    {data?.price}
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
                     {data?.available_quantity}
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
-                    {data?.rating}
+                    {data?.rating || 0}
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
                     {data?.vendor_name}
