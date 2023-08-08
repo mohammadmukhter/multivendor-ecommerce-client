@@ -69,10 +69,10 @@ const ManageProducts = () => {
                     </div>
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
-                    {data?.productName}
+                    {data?.categoryId.categoryName}
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
-                    {data?.productName}
+                    {data?.subCategoryId.subCategoryName}
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
                     {data?.productName}
