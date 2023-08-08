@@ -9,7 +9,7 @@ const ProductDetails = () => {
       <div className="px-12 gap-8 flex flex-col lg:flex-row">
         <img
           src={`http://localhost:3000/uploads/products/${product.productImg[0]}`}
-          className="max-w-sm rounded-lg shadow-2xl"
+          className="w-[240px] h-[200px] rounded-lg shadow-2xl"
         />
         <div>
           <h2 className="text-xl">Product Info</h2>
@@ -19,15 +19,27 @@ const ProductDetails = () => {
               <tbody>
                 <tr>
                   <td className="w-2/12">Price</td>
-                  <td className="w-10/12">{product?.price}</td>
+                  <td className="w-10/12">{product?.sellingPrice}</td>
                 </tr>
                 <tr>
                   <td className="w-2/12">available</td>
-                  <td className="w-10/12"> {product?.available_quantity}</td>
+                  <td className="w-10/12"> {product?.availableQuantity}</td>
                 </tr>
                 <tr>
                   <td className="w-2/12">Seller</td>
-                  <td className="w-10/12"> {product.vendor_name}</td>
+                  <td className="w-10/12"> {product.vendorEmail}</td>
+                </tr>
+                <tr>
+                  <td className="w-2/12">Model</td>
+                  <td className="w-10/12"> {product?.model}</td>
+                </tr>
+                <tr>
+                  <td className="w-2/12">Color</td>
+                  <td className="w-10/12"> {product?.color}</td>
+                </tr>
+                <tr>
+                  <td className="w-2/12">Size</td>
+                  <td className="w-10/12"> {product?.size}</td>
                 </tr>
                 <tr>
                   <td className="w-2/12">Rating</td>

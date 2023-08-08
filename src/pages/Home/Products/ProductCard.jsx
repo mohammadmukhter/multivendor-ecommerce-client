@@ -15,8 +15,8 @@ const ProductCard = ({ product }) => {
         <div className="px-4 pb-2 flex flex-col">
           <h2 className="font-bold text-xl ">{product.productName}</h2>
           <div className="">
-            <p>Price: {product?.price}</p>
-            <p>Available: {product?.available_quantity}</p>
+            <p>Price: {product?.sellingPrice}</p>
+            <p>Available: {product?.availableQuantity}</p>
           </div>
         </div>
       </div>

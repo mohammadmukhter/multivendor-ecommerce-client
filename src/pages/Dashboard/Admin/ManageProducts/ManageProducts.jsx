@@ -21,7 +21,7 @@ const ManageProducts = () => {
       <div className=" bg-gray-800 py-4 flex flex-col md:flex-row justify-start md:justify-center items-center rounded-t-md">
         <div className=" w-full md:w-1/3"></div>
         <h2 className="text-center w-full md:w-1/3 text-2xl font-bold uppercase rounded-t-md text-white">
-          All Classes{" "}
+          All Products{" "}
         </h2>
         <div className=" text-right w-full md:w-1/3 text-white">
           <Link to="/dashboard/addProduct">
@@ -38,11 +38,16 @@ const ManageProducts = () => {
             <tr>
               <th className="border-[1px] rounded-sm">#</th>
               <th className="border-[1px] rounded-sm">Photo</th>
+              <th className="border-[1px] rounded-sm">Category</th>
+              <th className="border-[1px] rounded-sm">Sub Category</th>
               <th className="border-[1px] rounded-sm">Product Name</th>
-              <th className="border-[1px] rounded-sm">Price</th>
+              <th className="border-[1px] rounded-sm">Buying Price</th>
+              <th className="border-[1px] rounded-sm">Selling Price</th>
               <th className="border-[1px] rounded-sm">Available Quantity</th>
               <th className="border-[1px] rounded-sm">Rating</th>
-              <th className="border-[1px] rounded-sm">Vendor</th>
+              <th className="border-[1px] rounded-sm">Model</th>
+              <th className="border-[1px] rounded-sm">Color</th>
+              <th className="border-[1px] rounded-sm">Size</th>
               <th className="border-[1px] rounded-sm">Status</th>
               <th className="border-[1px] rounded-sm">Action</th>
             </tr>
@@ -66,20 +71,36 @@ const ManageProducts = () => {
                   <td className=" font-semibold border-[1px] rounded-sm">
                     {data?.productName}
                   </td>
-                  <td className="text-end font-semibold border-[1px] rounded-sm">
-                    {data?.price}
+                  <td className=" font-semibold border-[1px] rounded-sm">
+                    {data?.productName}
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
-                    {data?.available_quantity}
+                    {data?.productName}
+                  </td>
+                  <td className="text-end font-semibold border-[1px] rounded-sm">
+                    {data?.buyingPrice}
+                  </td>
+                  <td className="text-end font-semibold border-[1px] rounded-sm">
+                    {data?.sellingPrice}
+                  </td>
+                  <td className=" font-semibold border-[1px] rounded-sm">
+                    {data?.availableQuantity}
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
                     {data?.rating || 0}
                   </td>
+
                   <td className=" font-semibold border-[1px] rounded-sm">
-                    {data?.vendor_name}
+                    {data?.model}
                   </td>
                   <td className=" font-semibold border-[1px] rounded-sm">
-                    {"active"}
+                    {data?.color}
+                  </td>
+                  <td className=" font-semibold border-[1px] rounded-sm">
+                    {data?.size}
+                  </td>
+                  <td className=" font-semibold border-[1px] rounded-sm">
+                    {data?.status}
                   </td>
 
                   <td className=" border-[1px] rounded-sm space-y-1">
